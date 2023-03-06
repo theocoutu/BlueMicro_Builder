@@ -1,7 +1,7 @@
 # Use this workflow to initialize your repository with the fimware you need for your keyboard
 # if you have multiple keyboards, you need to have 1 copy of this file per keyboard
 # rename the name below so that you can see the different keyboards in your github actions
-name: Tkl
+name: Tenkeyless
 
 # You will need to manually trigger this workflow
 on:  ['workflow_dispatch']
@@ -131,3 +131,11 @@ jobs:
       #    name: ${{ steps.job_variables.outputs.firmware-name }}
       #    path: |
       #      ${{ steps.job_variables.outputs.firmware-name }}/build
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          # Artifact name
+          name: uf2 # optional, default is artifact
+          # A file, directory or wildcard pattern that describes what to upload
+          path: *.uf2
+
